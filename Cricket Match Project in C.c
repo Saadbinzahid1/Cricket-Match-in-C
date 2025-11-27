@@ -60,6 +60,31 @@ void outputbowl(char a[][50])
 // Handling Toss
 int toss(void)
 {
+    char ch, toss, tossresult;
+    printf("Team 1 Choose Head or Tail(H for head and T for tail):");
+    scanf(" %c", &toss);
+    while (toss != 'H' && toss != 'T')
+    {
+        printf("Enter choice correctly:");
+        scanf(" %c", &toss);
+    }
+    printf("What is the result (H or T):");
+    scanf(" %c", &tossresult);
+    while (tossresult != 'H' && tossresult != 'T')
+    {
+        printf("Enter toss result correctly:");
+        scanf(" %c", &tossresult);
+    }
+    if (toss == tossresult)
+    {
+        printf("Team 1 won the toss!");
+        return 1;
+    }
+    else
+    {
+        printf("Team 2 won the toss!");
+        return 2;
+    }
 }
 
 // Displaying Remaining Players of Batting Team
