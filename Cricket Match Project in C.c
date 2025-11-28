@@ -90,6 +90,23 @@ int toss(void)
 // Displaying Remaining Players of Batting Team
 void displayremplayers(char a[][50], int b[], int k, int nonstriker)
 {
+    printf("\nRemaining Player Names:");
+    for (int i = 0; i < 11; i++)
+    {
+        int flag = 0;
+        for (int j = 0; j <= k; j++)
+        {
+            if (i == b[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if (i == nonstriker)
+            flag = 1;
+        if (flag == 0)
+            printf("\n%d: %s", i + 1, a[i]);
+    }
 }
 
 // inning Function
