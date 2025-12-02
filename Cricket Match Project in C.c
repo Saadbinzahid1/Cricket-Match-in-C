@@ -263,6 +263,17 @@ void inning(struct team *bat, struct team *bowl, char batnames[][50], char bowln
 // Finding Man Of The Match
 int manofthematch(int batsmanruns[])
 {
+    int max = batsmanruns[0];
+    int maxindex = 0;
+    for (int i = 1; i < 11; i++)
+    {
+        if (batsmanruns[i] > max)
+        {
+            maxindex = i;
+            max = batsmanruns[i];
+        }
+    }
+    return maxindex;
 }
 
 // Save Match Details to a File
