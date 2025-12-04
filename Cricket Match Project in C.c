@@ -279,6 +279,20 @@ int manofthematch(int batsmanruns[])
 // Save Match Details to a File
 void savematchdata(struct team t1, struct team t2, char team1[][50], char team2[][50], char *winner, char *manofthematch)
 {
+    FILE *a = fopen("Match Data.bin", "ab");
+    struct matchdata data;
+    strcpy(data.team1name, t1.name);
+    strcpy(data.team2name, t2.name);
+    strcpy(data.winner, winner);
+    strcpy(data.manofthematch, manofthematch);
+
+    for (int i = 0; i < 11; i++)
+    {
+        strcpy(data.team1players[i], team1[i]);
+        strcpy(data.team2players[i], team2[i]);
+    }
+    fwrite(&data, sizeof(struct matchdata), 1, a);
+    fclose(a);
 }
 
 // Read Match Data from File
