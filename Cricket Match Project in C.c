@@ -298,6 +298,23 @@ void savematchdata(struct team t1, struct team t2, char team1[][50], char team2[
 // Read Match Data from File
 void readfromfile()
 {
+    FILE *a = fopen("Match Data.bin", "rb");
+    struct matchdata data;
+    while (fread(&data, sizeof(struct matchdata), 1, a))
+    {
+        printf("\nMatch Details:\n");
+        printf("Team 1: %s\n", data.team1name);
+        printf("Team 2: %s\n", data.team2name);
+        printf("Winner: %s\n", data.winner);
+        printf("Man of the Match: %s\n", data.manofthematch);
+        printf("\nTeam 1 Players:\n");
+        for (int i = 0; i < 11; i++)
+            printf("%d. %s\n", i + 1, data.team1players[i]);
+        printf("\nTeam 2 Players:\n");
+        for (int i = 0; i < 11; i++)
+            printf("%d. %s\n", i + 1, data.team2players[i]);
+    }
+    fclose(a);
 }
 
 int main()
